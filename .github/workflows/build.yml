@@ -17,11 +17,24 @@ jobs:
       - run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o release/dlpu-rpc-linux_amd64 ./
       - run: CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o release/dlpu-rpc-linux_arm64 ./
 
+      - name: Upload binary files (windows_amd64)
+        uses: actions/upload-artifact@v2
+        with:
+          name: dlpu-rpc_windows_amd64
+          path: release/dlpu-rpc*windows_amd64.*
+
+      - name: Upload binary files (linux_amd64)
+        uses: actions/upload-artifact@v2
+        with:
+          name: dlpu-rpc_linux_amd64
+          path: release/dlpu-rpc*linux_amd64
+
+      - name: Upload binary files (linux_arm64)
       - name: Upload binary files
         uses: actions/upload-artifact@v2
         with:
-          name: artifact
-          path: release/
+          name: dlpu-rpc_linux_arm64
+          path: release/dlpu-rpc*linux_arm64
 
       - name: Release
         uses: softprops/action-gh-release@v1
