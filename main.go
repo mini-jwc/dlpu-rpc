@@ -31,14 +31,12 @@ func init() {
 	flag.Parse()
 	fmt.Println(*serverAddr, *publicAddr, *token)
 	var err error
-	go func() {
-		err = frp.Init(*publicAddr+":7000", *frpToken)
-		if err != nil {
-			logrus.Fatal("frp初始化错误", err)
-		}
-	}()
-
+	err = frp.Init(*publicAddr+":7000", *frpToken)
+	if err != nil {
+		logrus.Fatal("frp初始化错误", err)
+	}
 	logrus.Info("frp初始化成功")
+
 }
 
 func main() {

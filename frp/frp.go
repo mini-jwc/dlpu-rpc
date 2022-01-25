@@ -9,6 +9,7 @@ import (
 	"github.com/fatedier/frp/pkg/consts"
 	"github.com/fatedier/frp/pkg/util/log"
 	"github.com/fatedier/golib/crypto"
+	"github.com/sirupsen/logrus"
 	"math/rand"
 	"net"
 	"strconv"
@@ -98,10 +99,12 @@ func startService(
 	if errRet != nil {
 		return errRet
 	}
-	err := svr.Run()
-	if err != nil {
-		return err
-	}
+	go func() {
+		err := svr.Run()
+		if err != nil {
+			logrus.Fatal("frp运行错误")
+		}
+	}()
 
 	return nil
 
