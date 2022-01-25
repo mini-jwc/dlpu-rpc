@@ -30,7 +30,6 @@ jobs:
           path: release/dlpu-rpc*linux_amd64
 
       - name: Upload binary files (linux_arm64)
-      - name: Upload binary files
         uses: actions/upload-artifact@v2
         with:
           name: dlpu-rpc_linux_arm64
