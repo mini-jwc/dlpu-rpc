@@ -13,9 +13,9 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: '1.17'
-      - run: CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o dlpu-rpc-windows_amd64.exe ./
-      - run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dlpu-rpc-linux_amd64 ./
-      - run: CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o dlpu-rpc-linux_arm64 ./
+      - run: CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o release/dlpu-rpc-windows_amd64.exe ./
+      - run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o release/dlpu-rpc-linux_amd64 ./
+      - run: CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o release/dlpu-rpc-linux_arm64 ./
 
       - name: Upload binary files (windows_amd64)
         uses: actions/upload-artifact@v2
